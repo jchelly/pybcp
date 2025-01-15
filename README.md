@@ -26,7 +26,9 @@ Here, `username` and `password` are the database username and password.
 the name of the database which contains the table to be created or
 updated.
 
-### Upload a database table
+If the password is None then a password prompt will appear.
+
+### Uploading a database table
 
 ```
 dbcon.bulk_insert(table_name, columns, create_table=True, drop_existing=True)
@@ -38,3 +40,16 @@ existing table is removed first.
 
 Table column arrays should be stored in an OrderedDict if the ordering
 of the columns is important.
+
+### Executing SQL commands
+
+For convenience there's a function to execute SQL commands:
+```
+dbcon.execute(sql)
+```
+where `sql` is a string with the command to execute. This can be useful for
+creating indexes on newly uploaded tables, for example.
+
+This returns a list containing any tables returned by the command. Any
+returned tables are represented as dictionaries of arrays in the same way
+as data to be bulk inserted.
