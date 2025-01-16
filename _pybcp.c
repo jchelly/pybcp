@@ -914,8 +914,11 @@ static PyObject *_pybcp_get_columns(PyObject *self, PyObject *args)
 
           /* Create a numpy type descriptor for this column */
           PyArray_Descr *dtype_obj = PyArray_DescrNewFromType(dtype);
+#if NPY_ABI_VERSION < 0x02000000
           dtype_obj->elsize = pcol->size;
-
+#else
+          PyDataType_SET_ELSIZE(dtype_obj, pcol->size);
+#endif    
           /* Make (name, dtype) tuple for the column */
           PyObject *tuple = Py_BuildValue("sO", pcol->name, dtype_obj);
           Py_DECREF(dtype_obj);
