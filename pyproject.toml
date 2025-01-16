@@ -4,7 +4,7 @@ requires = ['meson-python', 'numpy<2.0']
 
 [project]
 name = "pybcp"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
   { name="John Helly", email="j.c.helly@durham.ac.uk" },
 ]
