@@ -1,6 +1,6 @@
 [build-system]
 build-backend = 'mesonpy'
-requires = ['meson-python']
+requires = ['meson-python', 'numpy<2.0']
 
 [project]
 name = "pybcp"
@@ -11,7 +11,7 @@ authors = [
 description = "Tool for importing data to MS SQL Server."
 requires-python = ">=3.10"
 dependencies = [
-    "numpy",
+    "numpy<2.0",
 ]
 readme = "README.md"
 classifiers = [
