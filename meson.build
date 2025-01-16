@@ -7,7 +7,7 @@ freetds_incdir = freetds_path / 'include'
 py = import('python').find_installation(pure: false)
 
 cc = meson.get_compiler('c')
-lib_sybdb = cc.find_library('sybdb', static : true, dirs : freetds_libdir)
+lib_sybdb = cc.find_library('sybdb', dirs : freetds_libdir)
 inc_sybdb = include_directories(freetds_incdir)
 
 py.install_sources('pybcp.py')
