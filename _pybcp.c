@@ -55,7 +55,7 @@ int msg_handler(DBPROCESS *dbproc, DBINT msgno, int msgstate, int severity,
   if (msgno == changed_database || msgno == changed_language) 
     return 0;
 
-  if (msgno > 0)strncpy(last_msg, msgtext, MAXLEN);
+  if (msgno > 0)strncpy(last_msg, msgtext, MAXLEN-1);
 
 #ifdef VERBOSE
   fflush(stdout);
@@ -84,8 +84,7 @@ int msg_handler(DBPROCESS *dbproc, DBINT msgno, int msgstate, int severity,
 int err_handler(DBPROCESS * dbproc, int severity, int dberr, int oserr, 
 		char *dberrstr, char *oserrstr)
 {
-
-  strncpy(last_err, dberrstr, MAXLEN);
+  strncpy(last_err, dberrstr, MAXLEN-1);
 
 #ifdef VERBOSE									
   if (dberr)
